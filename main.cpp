@@ -72,6 +72,14 @@ int main(int argc, char *argv[])
 			Kmean kmean(K);
 
 			kmean.Apply(original, dstImage);
+		} 
+		else if (strcmp(argv[1], "--canny") == 0)
+		{
+			int lowThreshold = atoi(argv[3]);
+			int highThreshold = atoi(argv[4]);
+			CannyEdgeDetector canny(lowThreshold, highThreshold);
+			canny.Apply(original, dstImage);
+			Canny(original, exam, lowThreshold, highThreshold, 3);
 		}
 		imshow("Original", original);
 		imshow("Processed", dstImage);
